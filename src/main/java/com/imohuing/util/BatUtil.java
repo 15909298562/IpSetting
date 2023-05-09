@@ -5,6 +5,7 @@ import com.imohuing.frame.IpSettingFrame;
 
 import java.io.*;
 import java.net.MalformedURLException;
+import java.nio.charset.StandardCharsets;
 
 /**
  * @Author Yangws
@@ -26,10 +27,10 @@ public class BatUtil {
         try {
             FileWriter writer = new FileWriter(tempFile);
             InputStream staticStream = IpSetting.class.getResourceAsStream(batPath);
-            BufferedReader staticReader = new BufferedReader(new InputStreamReader(staticStream));
+            BufferedReader staticReader = new BufferedReader(new InputStreamReader(staticStream,"UTF-8"));
             String line;
             while((line=staticReader.readLine()) != null){
-                writer.write(line + "\n");
+                writer.write(line + "\r\n");
             }
             writer.close();
             staticReader.close();
