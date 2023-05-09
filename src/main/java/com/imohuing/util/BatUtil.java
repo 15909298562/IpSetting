@@ -42,13 +42,21 @@ public class BatUtil {
         }
 
         try {
-            String cmd = "cmd.exe /c " + tempFile.getPath();
+			
+			String cmd = "cmd.exe /c " + tempFile.getPath();
+			/*
+			 * if (argStrings != null && argStrings.length > 0) { for (String arg :
+			 * argStrings) { cmd += " " + arg; } }
+			 */
+			 
+            String[] cmdArray = new String[argStrings.length+1];
+            cmdArray[0] = tempFile.getPath();
             if (argStrings != null && argStrings.length > 0) {
-                for (String arg : argStrings) {
-                    cmd += " " + arg;
+                for (int i=0;i<argStrings.length;i++) {
+                	cmdArray[1+i] = argStrings[i];
                 }
             }
-            Process ps = Runtime.getRuntime().exec(cmd);
+            Process ps = Runtime.getRuntime().exec(cmdArray);
             InputStream inputStream = ps.getInputStream();
             BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(inputStream,"UTF-8"));
             String line;

@@ -40,6 +40,9 @@ public class TimerUtil {
             public void run() {
                 String ipAddr = "127.0.0.1";
                 try{
+                	/*
+                	 * TODO 当本地网络存在多个已启用并连接的网络适配器时出现的ip地址不正确的问题，当安装了wsl2时就会存在这个问题
+                	 */
                     ipAddr = Inet4Address.getLocalHost().getHostAddress();
                 }catch(UnknownHostException exception){
                     exception.printStackTrace();
