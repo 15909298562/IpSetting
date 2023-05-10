@@ -169,6 +169,7 @@ public class IpSettingFrame extends JFrame {
     public static String DynamicIpUrl = "/bat/DynamicIp.bat";
     public static String GetAdapterUrl = "/bat/GetAdapter.bat";
     public static String StaticIpUrl = "/bat/StaticIp.bat";
+    public static String GetIpUrl = "/bat/GetIp.bat";
 
     /**
      * IpSetting图标和加载中动画文件
