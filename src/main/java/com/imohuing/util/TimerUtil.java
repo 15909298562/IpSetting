@@ -31,7 +31,7 @@ public class TimerUtil {
     }
 
     /**
-     * 10秒之后重新获取当前主机的IP地址并将该IP地址赋值给状态栏
+     * 5秒之后重新获取当前主机的IP地址并将该IP地址赋值给状态栏
      */
     public static void setCurrentIpAddr(){
         Timer getCurrentIpAddrTimer = getTimerInstance();
@@ -39,18 +39,26 @@ public class TimerUtil {
             @Override
             public void run() {
                 String ipAddr = "127.0.0.1";
-                try{
-                	/*
-                	 * TODO 当本地网络存在多个已启用并连接的网络适配器时出现的ip地址不正确的问题，当安装了wsl2时就会存在这个问题
-                	 */
+                /*try{
                     ipAddr = Inet4Address.getLocalHost().getHostAddress();
                 }catch(UnknownHostException exception){
                     exception.printStackTrace();
+                }*/
+                String batPath = IpSettingFrame.GetIpUrl;
+                String result = BatUtil.runBat(batPath);
+                if(result.contains("success")){
+                    String[] results = result.split("@");
+                    for (String s : results) {
+                        if(s.startsWith("IPv4=")){
+                            ipAddr = s.substring(5);
+                            break;
+                        }
+                    }
                 }
                 String statusText = "当前IP地址为：" + ipAddr;
                 IpSettingFrame.currentIpLabel.setText(statusText);
             }
-        },1000*10);
+        },1000*5);
     }
 
     /**
