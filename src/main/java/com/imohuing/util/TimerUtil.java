@@ -31,7 +31,7 @@ public class TimerUtil {
     }
 
     /**
-     * 5秒之后重新获取当前主机的IP地址并将该IP地址赋值给状态栏
+     * 10秒之后重新获取当前主机的IP地址并将该IP地址赋值给状态栏
      */
     public static void setCurrentIpAddr(){
         Timer getCurrentIpAddrTimer = getTimerInstance();
@@ -58,7 +58,7 @@ public class TimerUtil {
                 String statusText = "当前IP地址为：" + ipAddr;
                 IpSettingFrame.currentIpLabel.setText(statusText);
             }
-        },1000*5);
+        },1000*10);
     }
 
     /**
