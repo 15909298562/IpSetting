@@ -24,6 +24,7 @@ public class IpSetting {
             System.out.println("初始化h2失败，加载h2驱动失败！");
             throw new RuntimeException(e);
         }
+        System.out.println();
         IpSettingFrame.getInstance();
     }
 
